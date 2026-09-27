@@ -1,0 +1,76 @@
+# Configuração única. Tudo que muda entre ambientes vem de VARIÁVEL DE AMBIENTE
+# (valor depois dos ":" é o padrão para desenvolvimento local). Nenhum segredo aqui.
+spring:
+  application:
+    name: abrigo-animal
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/abrigo}
+    username: ${DB_USER:abrigo}
+    password: ${DB_PASSWORD:abrigo}
+    hikari:
+      maximum-pool-size: ${DB_POOL:5}   # poucos usuários: pool pequeno economiza memória/conexões
+
+  jpa:
+    open-in-view: false          # força montar as respostas dentro da transação (evita consultas escondidas)
+    hibernate:
+      ddl-auto: validate         # quem cria/altera tabelas é o Flyway; o Hibernate só confere
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+  flyway:
+    enabled: true
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+
+  web:
+    resources:
+      add-mappings: false        # arquivos estáticos são servidos pelo SpaConfig (fallback de SPA)
+
+  modulith:
+    events:
+      jdbc:
+        schema-initialization:
+          enabled: true          # cria a tabela event_publication do Modulith
+      republish-outstanding-events-on-restart: true
+
+server:
+  port: ${PORT:8080}
+  forward-headers-strategy: framework   # atrás do proxy da hospedagem: IP real e HTTPS corretos
+  servlet:
+    session:
+      timeout: 8h
+      cookie:
+        http-only: true
+        same-site: lax
+        secure: ${COOKIE_SECURE:false}  # true em produção (HTTPS)
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+abrigo:
+  url-publica: ${URL_PUBLICA:http://localhost:8080}
+  armazenamento:
+    diretorio: ${ARMAZENAMENTO_DIR:./dados/arquivos}
+  admin:
+    nome: ${ADMIN_NOME:Administrador}
+    email: ${ADMIN_EMAIL:}
+    senha: ${ADMIN_SENHA:}
+  solicitacoes:
+    limite-por-hora: ${SOLICITACOES_LIMITE_HORA:5}
+
+logging:
+  level:
+    br.org.abrigo: INFO

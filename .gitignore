@@ -1,0 +1,25 @@
+# Segredos: NUNCA versionar (lição do Patudos)
+.env
+*.env
+!.env.example
+
+# Java / Maven
+backend/target/
+backend/dados/
+*.class
+*.log
+
+# Build do frontend copiado para o backend (gerado no Dockerfile)
+backend/src/main/resources/static/
+
+# Node / frontend
+node_modules/
+frontend/dist/
+.npm-cache/
+
+# IDEs e sistema
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db

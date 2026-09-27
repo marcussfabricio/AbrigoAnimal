@@ -1,0 +1,21 @@
+# Ambiente LOCAL de desenvolvimento: só o banco.
+# Uso: docker compose up -d
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: abrigo
+      POSTGRES_USER: abrigo
+      POSTGRES_PASSWORD: abrigo
+    ports:
+      - "5433:5432"
+    volumes:
+      - dados-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U abrigo -d abrigo"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  dados-postgres:
