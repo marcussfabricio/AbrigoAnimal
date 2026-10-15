@@ -1,0 +1,35 @@
+/** Site público: animais visíveis na vitrine. Sem login. */
+import { USAR_API_REAL } from './config';
+import { requisicao, query } from './cliente';
+import * as banco from './mock/banco';
+
+/**
+ * @param {{especie?: 'CAO'|'GATO', sexo?: string, idoso?: boolean, pagina?: number, tamanho?: number}} filtros
+ * @returns {Promise<{itens: object[], pagina: number, tamanho: number, total: number, totalPaginas: number}>}
+ */
+export async function listarAnimais(filtros = {}) {
+  if (USAR_API_REAL) return requisicao('/api/public/animais' + query(filtros));
+  return banco.responder(() => {
+    const lista = banco
+      .filtrarAnimais(banco.animais().filter(banco.naVitrine), filtros)
+      // idosos primeiro: são os que mais precisam de visibilidade
+      .sort((a, b) => Number(b.idoso) - Number(a.idoso))
+      .map(banco.publico);
+    return banco.paginar(lista, filtros.pagina, filtros.tamanho ?? 48);
+  });
+}
+
+/** Página de um animal, pelo slug da URL (/animais/thor-a1). */
+export async function buscarAnimal(slug) {
+  if (USAR_API_REAL) return requisicao(`/api/public/animais/${encodeURIComponent(slug)}`);
+  return banco.responder(() => banco.publico(banco.animalPorSlug(slug)));
+}
+
+/**
+ * Vídeos dos animais (ADR-005: hospedados no YouTube da ONG; o sistema guarda só o ID).
+ * O backend ainda não tem esta rota: no modo API real a seção simplesmente não aparece.
+ */
+export async function listarVideos({ tamanho = 12 } = {}) {
+  if (USAR_API_REAL) return { itens: [] }; // TODO ADR-005: requisicao('/api/public/videos' + query({ tamanho }))
+  return banco.responder(() => ({ itens: banco.videosPublicos().slice(0, tamanho) }));
+}
