@@ -1,0 +1,370 @@
+/* Página inicial e apresentação do projeto. */
+.capa,
+.projeto-capa {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  padding-block: 2.5rem 3rem;
+}
+.capa h1,
+.projeto-capa h1 {
+  font-size: clamp(2.65rem, 5.2vw, 5.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  margin: 1.25rem 0;
+}
+.capa-texto > p,
+.projeto-capa p {
+  max-width: 33rem;
+  color: var(--texto-suave);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+.ponto-verde {
+  width: 9px;
+  height: 9px;
+  background: var(--marca-salvia);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px #b3d39e26;
+}
+.capa-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.75rem;
+  margin-top: 1.75rem;
+}
+.capa-nota {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+}
+.capa-nota i {
+  color: var(--marca-terracota);
+}
+.capa-retrato {
+  position: relative;
+  margin: 0 0 1rem;
+  padding: 0.5rem;
+  background: var(--marca-salvia);
+  border-radius: 48% 48% 20px 20px;
+  box-shadow: 0 25px 65px #2e2c2c14;
+  transform: rotate(2deg);
+}
+.capa-retrato > img {
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.bilhete {
+  position: absolute;
+  bottom: 2rem;
+  left: -0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: #e7efdf;
+  color: var(--tinta);
+  box-shadow: 0 12px 30px #2e2c2c1a;
+  border-radius: 16px;
+  transform: rotate(-4deg);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.bilhete > i {
+  display: grid;
+  place-items: center;
+  background: var(--marca-salvia);
+  color: var(--tinta);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+}
+.bilhete small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--texto-suave);
+  margin-top: 0.2rem;
+}
+.capa-legenda {
+  position: absolute;
+  bottom: -1.6rem;
+  right: 0.5rem;
+  color: var(--texto-suave);
+  font-size: 0.7rem;
+}
+.manifesto {
+  display: grid;
+  gap: 1.25rem;
+  border-block: 1px solid var(--linha);
+  padding-block: 1.75rem;
+}
+.manifesto > span {
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+.manifesto p {
+  font-size: 1.1rem;
+  margin: 0;
+}
+.manifesto strong {
+  font-weight: 600;
+}
+.secao-editorial {
+  padding-block: 3rem;
+}
+.cabeca-editorial {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.cabeca-editorial p,
+.vinculo-inicio p {
+  color: var(--texto-suave);
+  line-height: 1.8;
+}
+.cabeca-editorial h2,
+.vinculo-inicio h2,
+.duvidas-projeto h2 {
+  font-size: clamp(2.1rem, 3.6vw, 3.7rem);
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+  margin-top: 0.8rem;
+}
+.vinculo-inicio,
+.duvidas-projeto {
+  display: grid;
+  gap: 2rem;
+}
+.lista-vinculo {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.lista-vinculo li {
+  display: flex;
+  gap: 1.25rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--linha);
+}
+.lista-vinculo li:first-child {
+  padding-top: 0;
+}
+.lista-vinculo li > span {
+  font-family: Georgia, serif;
+  color: var(--marca-terracota);
+  font-size: 2rem;
+  line-height: 1;
+}
+.lista-vinculo h3 {
+  font-family: var(--fonte);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.lista-vinculo p {
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+}
+.caminhos-leves {
+  display: grid;
+  gap: 1rem;
+}
+.caminho-leve {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  border-radius: 24px;
+  background: var(--superficie);
+  box-shadow: var(--sombra-flutuante);
+  text-decoration: none;
+  color: var(--tinta);
+}
+.caminho-leve > i {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: #b3d39e40;
+  font-size: 1.5rem;
+  color: var(--marca-terracota);
+  margin-bottom: 1.75rem;
+}
+.caminho-leve h3 {
+  font-size: 1.7rem;
+}
+.caminho-leve p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--texto-suave);
+}
+.caminho-leve > span,
+.caminho-leve > a {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.caminho-leve span i {
+  margin-left: 0.5rem;
+}
+.mural-flutuante {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding-block: 0.5rem;
+}
+.mural-flutuante button {
+  border: 0;
+  cursor: pointer;
+  min-width: 0;
+  padding: 0.4rem 0.4rem 1rem;
+  border-radius: 14px;
+  background: var(--superficie);
+  box-shadow: var(--sombra-flutuante);
+  transform: rotate(-2deg);
+}
+.mural-flutuante button:nth-child(even) {
+  transform: rotate(2deg);
+}
+.mural-flutuante img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.convite-editorial {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding-block: 4rem;
+}
+.convite-editorial h2 {
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+.projeto-capa figure {
+  margin: 0;
+}
+.projeto-capa img {
+  width: 100%;
+  height: auto;
+  border-radius: 40% 40% 24px 24px;
+  border: 8px solid var(--superficie);
+  box-shadow: var(--sombra-flutuante);
+}
+.projeto-capa figcaption {
+  color: var(--texto-suave);
+  font-size: 0.75rem;
+  margin-top: 1rem;
+}
+.projeto-capa .link-editorial {
+  display: flex;
+  margin-top: 1rem;
+}
+.duvidas-projeto details {
+  border-bottom: 1px solid var(--linha);
+}
+.duvidas-projeto summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.5rem 0;
+  list-style: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.duvidas-projeto summary::-webkit-details-marker {
+  display: none;
+}
+.duvidas-projeto summary i {
+  color: var(--marca-terracota);
+  font-size: 0.85rem;
+}
+.duvidas-projeto details[open] summary i {
+  transform: rotate(45deg);
+}
+.duvidas-projeto details p {
+  line-height: 1.8;
+  color: var(--texto-suave);
+  padding-bottom: 1rem;
+}
+.estado-conteudo {
+  padding: 2rem;
+  border: 1px dashed var(--linha);
+  border-radius: 20px;
+}
+@media (min-width: 768px) {
+  .capa,
+  .projeto-capa {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 3rem;
+    padding-block: 4rem;
+  }
+  .manifesto {
+    grid-template-columns: 1fr 1.2fr auto;
+    align-items: center;
+  }
+  .secao-editorial {
+    padding-block: 4rem;
+  }
+  .cabeca-editorial {
+    grid-template-columns: 1.3fr 0.7fr;
+    align-items: end;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+  }
+  .vinculo-inicio,
+  .duvidas-projeto {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .caminhos-leves {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .mural-flutuante {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 767.98px) {
+  .capa-retrato {
+    width: min(100% - 1rem, 400px);
+    justify-self: center;
+  }
+  .capa-retrato > img {
+    aspect-ratio: 1.18;
+    max-height: 330px;
+  }
+  .capa .botao,
+  .projeto-capa .botao {
+    width: 100%;
+  }
+  .capa-nota {
+    margin-top: 1rem;
+  }
+  .projeto-capa figure {
+    max-width: 380px;
+    justify-self: center;
+  }
+}
+
+.foto-mural-ampliada {
+  width: 100%;
+  max-height: 70dvh;
+  object-fit: contain;
+  border-radius: 12px;
+}

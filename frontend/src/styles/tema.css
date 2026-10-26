@@ -1,0 +1,554 @@
+/* =====================================================================
+   Identidade visual do Abrigo Animal Joinville
+   Cores tiradas do logo: verde-sálvia (fundo), laranja (gato) e tinta escura.
+   Todo texto sobre cor foi conferido para contraste mínimo AA (4,5:1).
+   ===================================================================== */
+:root {
+  /* Cores principais retiradas da logo do abrigo */
+  --marca-salvia: #B3D39E;
+  --marca-clara: #FEFEFE;
+  --marca-laranja: #F39534;
+  --marca-terracota: #8A3B32;
+  --marca-tinta: #2E2C2C;
+  --marca-areia: #DFA96B;
+  --marca-pessego: #FDCC9C;
+  --marca-vermelho: #D93438;
+
+  /* Tons de apoio derivados da paleta para manter boa leitura */
+  --laranja: var(--marca-terracota);
+  --laranja-escuro: #6D3029;
+  --laranja-logo: var(--marca-laranja);
+  --laranja-suave: #FFF0DD;
+  --verde: #496343;
+  --verde-escuro: var(--marca-tinta);
+  --verde-logo: var(--marca-salvia);
+  --verde-suave: #E7F1DF;
+  --tinta: var(--marca-tinta);
+  --texto: var(--marca-tinta);
+  --texto-suave: #625B58;
+  --linha: #D9E4D1;
+  --linha-suave: #E7EDE2;
+  --fundo: #FFFCF6;
+  --superficie: var(--marca-clara);
+  --perigo: var(--marca-terracota);
+  --perigo-suave: #F8E9E7;
+  --perigo-borda: #E4BFBA;
+  --azul: var(--verde);
+  --azul-suave: var(--verde-suave);
+  --amarelo-suave: #FFF2DE;
+  --esqueleto: #F1F5ED;
+
+  --raio: 14px;
+  --raio-lg: 22px;
+  --sombra: 0 6px 22px rgba(46, 44, 44, 0.08);
+  --sombra-forte: 0 14px 38px rgba(46, 44, 44, 0.16);
+  --toque: 48px; /* altura mínima da área de toque */
+  --fonte: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Bootstrap herda as cores da marca */
+  --bs-body-font-family: var(--fonte);
+  --bs-body-color: var(--texto);
+  --bs-body-bg: var(--fundo);
+  --bs-primary: var(--laranja);
+  --bs-primary-rgb: 138, 59, 50;
+  --bs-primary-text-emphasis: #612B25;
+  --bs-primary-bg-subtle: #F8E9E7;
+  --bs-primary-border-subtle: #E4BFBA;
+  --bs-secondary: var(--marca-areia);
+  --bs-secondary-rgb: 223, 169, 107;
+  --bs-secondary-color: var(--texto-suave);
+  --bs-success: var(--verde);
+  --bs-success-rgb: 73, 99, 67;
+  --bs-success-text-emphasis: #34452F;
+  --bs-success-bg-subtle: var(--verde-suave);
+  --bs-success-border-subtle: #CADCC0;
+  --bs-danger: var(--perigo);
+  --bs-danger-rgb: 138, 59, 50;
+  --bs-danger-text-emphasis: #612B25;
+  --bs-danger-bg-subtle: var(--perigo-suave);
+  --bs-danger-border-subtle: var(--perigo-borda);
+  --bs-warning: var(--marca-laranja);
+  --bs-warning-rgb: 243, 149, 52;
+  --bs-warning-text-emphasis: #70420F;
+  --bs-warning-bg-subtle: var(--amarelo-suave);
+  --bs-warning-border-subtle: #E8BF8F;
+  --bs-info: var(--marca-salvia);
+  --bs-info-rgb: 179, 211, 158;
+  --bs-info-text-emphasis: #35452F;
+  --bs-info-bg-subtle: var(--verde-suave);
+  --bs-info-border-subtle: #CADCC0;
+  --bs-link-color: var(--laranja);
+  --bs-link-color-rgb: 138, 59, 50;
+  --bs-link-hover-color: var(--laranja-escuro);
+  --bs-border-color: var(--linha);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 84px;
+}
+body {
+  min-width: 320px;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte);
+  overflow-x: clip;
+}
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+  color: var(--tinta);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+h5,
+h6,
+.h5,
+.h6 {
+  color: var(--tinta);
+  font-weight: 700;
+}
+img {
+  max-width: 100%;
+}
+a {
+  color: var(--laranja);
+}
+:focus-visible {
+  outline: 3px solid var(--laranja-logo);
+  outline-offset: 2px;
+}
+.visualmente-oculto {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ------------------------------ Botões ------------------------------ */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: var(--toque);
+  padding: 0.7rem 1.4rem;
+  border: 2px solid transparent;
+  border-radius: var(--raio);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    transform 0.1s,
+    box-shadow 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.botao:active {
+  transform: scale(0.98);
+}
+.botao:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.botao-principal {
+  background: var(--marca-laranja);
+  color: var(--marca-tinta);
+  box-shadow: 0 6px 16px rgba(243, 149, 52, 0.26);
+}
+.botao-principal:hover {
+  background: var(--laranja-escuro);
+  color: var(--marca-clara);
+}
+.botao-verde {
+  background: var(--verde);
+  color: var(--marca-clara);
+}
+.botao-verde:hover {
+  background: var(--verde-escuro);
+  color: var(--marca-clara);
+}
+.botao-contorno {
+  background: var(--superficie);
+  color: var(--tinta);
+  border-color: var(--linha);
+}
+.botao-contorno:hover {
+  border-color: var(--laranja);
+  color: var(--laranja);
+}
+.botao-texto {
+  background: none;
+  color: var(--laranja);
+  padding-inline: 0.6rem;
+}
+.botao-perigo {
+  background: var(--superficie);
+  color: var(--perigo);
+  border-color: var(--perigo-borda);
+}
+.botao-bloco {
+  width: 100%;
+}
+.botao-grande {
+  min-height: 56px;
+  font-size: 1.05rem;
+  border-radius: 16px;
+}
+.botao-icone {
+  width: var(--toque);
+  height: var(--toque);
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* ------------------------------- Chips ------------------------------ */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.chips-rolagem {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+  margin-inline: -1rem;
+  padding-inline: 1rem;
+}
+.chips-rolagem::-webkit-scrollbar {
+  display: none;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--linha);
+  border-radius: 999px;
+  background: var(--superficie);
+  color: var(--texto);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.chip[aria-pressed='true'],
+.chip[aria-checked='true'] {
+  border-color: var(--laranja);
+  background: var(--laranja-suave);
+  color: var(--laranja-escuro);
+}
+.chip-pequeno {
+  min-height: 0;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.8rem;
+  border-width: 1px;
+  cursor: default;
+}
+
+/* Selos (status) */
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.selo-verde {
+  background: var(--verde-suave);
+  color: var(--verde-escuro);
+}
+.selo-laranja {
+  background: var(--laranja-suave);
+  color: var(--laranja-escuro);
+}
+.selo-amarelo {
+  background: var(--amarelo-suave);
+  color: var(--tinta);
+}
+.selo-azul {
+  background: var(--azul-suave);
+  color: var(--azul);
+}
+.selo-cinza {
+  background: var(--linha-suave);
+  color: var(--texto-suave);
+}
+
+/* ------------------------------- Cartões ---------------------------- */
+.cartao {
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-lg);
+  box-shadow: var(--sombra);
+}
+.cartao-corpo {
+  padding: 1.25rem;
+}
+
+/* ------------------------------ Campos ------------------------------ */
+.campo {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 1.15rem;
+}
+.campo > label,
+.campo-rotulo {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--tinta);
+}
+.campo-dica {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+.campo-erro {
+  font-size: 0.85rem;
+  color: var(--perigo);
+  font-weight: 600;
+}
+.entrada {
+  width: 100%;
+  min-height: 52px;
+  padding: 0.75rem 0.95rem;
+  border: 2px solid var(--linha);
+  border-radius: var(--raio);
+  background: var(--superficie);
+  color: var(--tinta);
+  font-size: 1rem; /* 16px: evita o zoom automático do iPhone */
+}
+textarea.entrada {
+  min-height: 110px;
+  resize: vertical;
+}
+.entrada:focus {
+  outline: none;
+  border-color: var(--laranja);
+  box-shadow: 0 0 0 4px rgba(243, 149, 52, 0.22);
+}
+.entrada[aria-invalid='true'] {
+  border-color: var(--perigo);
+}
+
+/* Interruptor (liga/desliga) grande, fácil de tocar */
+.interruptor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 60px;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--linha);
+  cursor: pointer;
+}
+.interruptor:last-child {
+  border-bottom: 0;
+}
+.interruptor-texto strong {
+  display: block;
+  color: var(--tinta);
+}
+.interruptor-texto small {
+  color: var(--texto-suave);
+}
+.interruptor input {
+  appearance: none;
+  flex: 0 0 auto;
+  width: 54px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--linha);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.interruptor input::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--marca-clara);
+  box-shadow: 0 1px 3px rgba(46, 44, 44, 0.25);
+  transition: transform 0.15s;
+}
+.interruptor input:checked {
+  background: var(--verde);
+}
+.interruptor input:checked::after {
+  transform: translateX(22px);
+}
+
+/* Contador +/– para idade */
+.contador {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.contador .botao-texto {
+  white-space: nowrap;
+}
+.contador output {
+  min-width: 6.5rem;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--tinta);
+}
+
+/* ------------------------------- Seções ----------------------------- */
+.secao {
+  padding-block: 2.5rem;
+}
+.sobretitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--laranja);
+}
+.titulo-secao {
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  margin: 0.3rem 0 0.6rem;
+}
+.texto-suave {
+  color: var(--texto-suave);
+}
+
+/* ---------------------------- Avisos (toast) ------------------------ */
+.avisos {
+  position: fixed;
+  left: 50%;
+  bottom: calc(88px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: 2000;
+  display: grid;
+  gap: 0.5rem;
+  width: min(92vw, 420px);
+  pointer-events: none;
+}
+.aviso {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.9rem 1rem;
+  border-radius: var(--raio);
+  background: var(--tinta);
+  color: var(--marca-clara);
+  box-shadow: var(--sombra-forte);
+  font-weight: 600;
+  pointer-events: auto;
+  animation: subir 0.2s ease-out;
+}
+.aviso-erro {
+  background: var(--perigo);
+}
+.aviso-sucesso i {
+  color: var(--verde-logo);
+}
+@keyframes subir {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+}
+
+/* ------------------------- Folha inferior (sheet) ------------------- */
+.folha-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  background: rgba(46, 44, 44, 0.45);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: aparecer 0.15s;
+}
+.folha {
+  width: 100%;
+  max-width: 560px;
+  max-height: 88dvh;
+  overflow-y: auto;
+  background: var(--superficie);
+  border-radius: 24px 24px 0 0;
+  padding: 0.75rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
+  animation: subir 0.2s ease-out;
+}
+.folha::before {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 5px;
+  border-radius: 9px;
+  background: var(--linha);
+  margin: 0 auto 0.9rem;
+}
+@media (min-width: 768px) {
+  .folha-fundo {
+    align-items: center;
+  }
+  .folha {
+    border-radius: 24px;
+  }
+}
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ------------------------------ Estados ----------------------------- */
+.carregando {
+  display: grid;
+  place-items: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  color: var(--texto-suave);
+}
+.esqueleto {
+  background: linear-gradient(90deg, var(--esqueleto) 25%, var(--esqueleto) 50%, var(--esqueleto) 75%);
+  background-size: 200% 100%;
+  animation: brilho 1.2s infinite;
+  border-radius: var(--raio-lg);
+}
+@keyframes brilho {
+  to {
+    background-position: -200% 0;
+  }
+}
+.vazio {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--texto-suave);
+}
+.vazio i {
+  font-size: 2.2rem;
+  color: var(--verde-logo);
+  margin-bottom: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

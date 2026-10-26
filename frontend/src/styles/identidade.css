@@ -1,0 +1,793 @@
+/* Identidade compartilhada: cores da logo, superfícies leves e leitura confortável. */
+:root {
+  --fundo: #fffdf9;
+  --linha: #e5e5da;
+  --sombra-flutuante: 0 8px 32px rgba(46, 44, 44, 0.055);
+  --raio: 16px;
+  --raio-lg: 24px;
+}
+html {
+  scroll-padding-top: 100px;
+}
+body {
+  min-width: 0;
+  background: var(--fundo);
+}
+button,
+a,
+summary,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+input,
+select,
+textarea {
+  font-size: max(1rem, 16px);
+}
+.botao {
+  border-radius: 999px;
+  min-height: 48px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition:
+    background-color 160ms,
+    box-shadow 160ms,
+    transform 160ms;
+}
+.botao-grande {
+  min-height: 56px;
+  padding-inline: 1.5rem;
+}
+.botao:active {
+  transform: scale(0.98);
+}
+.botao-principal {
+  background: var(--marca-laranja);
+  color: var(--marca-tinta);
+  border-color: transparent;
+  box-shadow: 0 6px 18px #f3953426;
+}
+.botao-verde {
+  background: var(--marca-salvia);
+  color: var(--marca-tinta);
+  border-color: transparent;
+}
+.botao-contorno {
+  border-color: #cacfc4;
+}
+.entrada {
+  border-radius: 14px;
+  background: var(--superficie);
+  border-color: #c9cec4;
+  padding: 0.85rem 1rem;
+}
+.entrada:focus {
+  border-color: var(--marca-terracota);
+  box-shadow: 0 0 0 3px #8a3b3212;
+}
+.cartao {
+  border: 1px solid #2e2c2c08;
+  box-shadow: var(--sombra-flutuante);
+}
+.cartao-corpo {
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+.chip {
+  min-height: 46px;
+  border-radius: 999px;
+  background: var(--superficie);
+}
+.chip[aria-pressed='true'] {
+  background: var(--marca-salvia);
+  border-color: var(--marca-salvia);
+  color: var(--tinta);
+}
+.chip-pequeno {
+  min-height: auto;
+}
+.folha {
+  max-height: calc(100dvh - 2rem);
+  overscroll-behavior-y: contain;
+  border-radius: 28px 28px 0 0;
+}
+:focus-visible {
+  outline: 3px solid var(--marca-terracota);
+  outline-offset: 4px;
+}
+
+/* Tipografia editorial nas páginas públicas; controles mantêm a fonte de interface. */
+.site-publico h1,
+.site-publico h2:not(.h5):not(.h6):not(.rodape-titulo),
+.site-publico h3:not(.cartao-animal-nome) {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  color: var(--tinta);
+  text-wrap: balance;
+}
+.site-publico em {
+  color: var(--marca-terracota);
+  font-weight: inherit;
+}
+.site-publico .titulo-secao {
+  font-size: clamp(2.2rem, 4vw, 4.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  max-width: 22ch;
+}
+.site-publico p {
+  line-height: 1.8;
+}
+.site-publico > main > .container.secao {
+  padding-top: 3rem !important;
+  padding-bottom: 4rem;
+}
+.site-publico .sobretitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--marca-terracota);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.link-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 44px;
+  color: var(--marca-terracota);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+}
+.cabecalho {
+  background: #fffdf9eb;
+  border-bottom: 1px solid #2e2c2c0a;
+}
+.cabecalho-conteudo {
+  min-height: 78px;
+}
+.marca-texto strong {
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.marca-texto small {
+  font-size: 0.6rem;
+  color: var(--marca-terracota);
+}
+.menu-link {
+  font-size: 0.85rem;
+  padding-inline: 0.8rem;
+  border-radius: 999px;
+}
+.menu-link.active {
+  background: #b3d39e40;
+  color: var(--marca-terracota);
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+.cabecalho-acoes-movel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.atalho-apadrinhar {
+  font-size: 0.75rem;
+  padding-inline: 0.85rem;
+}
+.menu-botao {
+  border: 0;
+}
+
+/* Catálogo e ficha: fotos maiores, informação legível e ações próximas. */
+.catalogo-abertura {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.catalogo-abertura p {
+  max-width: 42rem;
+  color: var(--texto-suave);
+}
+.catalogo-nota {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-left: 3px solid var(--marca-salvia);
+  padding-left: 1rem;
+  max-width: 350px;
+}
+.catalogo-nota i {
+  color: var(--marca-terracota);
+  font-size: 1.5rem;
+}
+.catalogo-nota p {
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}
+.filtros-fixos {
+  top: calc(78px + env(safe-area-inset-top));
+  background: #fffdf9f5;
+  backdrop-filter: blur(12px);
+  padding-block: 1rem;
+}
+.grade-animais {
+  gap: 1.25rem;
+}
+.cartao-animal {
+  padding: 0.5rem;
+  background: var(--superficie);
+  border: 0;
+  border-radius: 24px;
+  box-shadow: var(--sombra-flutuante);
+}
+.cartao-animal-foto {
+  aspect-ratio: 1;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.cartao-animal-corpo {
+  padding: 1rem 0.6rem 0.5rem;
+}
+.site-publico .cartao-animal-nome {
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+.cartao-animal-info {
+  font-size: 0.8rem;
+}
+.cartao-animal-acao {
+  border-top: 1px solid var(--linha);
+  padding-top: 0.75rem;
+  color: var(--marca-terracota);
+  font-size: 0.85rem;
+}
+.cartao-animal-selo {
+  background: var(--marca-salvia);
+  color: var(--tinta);
+}
+.galeria {
+  margin-inline: 0;
+  padding: 0.5rem;
+  border-radius: 28px;
+  background: var(--superficie);
+  box-shadow: var(--sombra-flutuante);
+}
+.galeria-trilho {
+  border-radius: 22px;
+}
+.galeria-item {
+  aspect-ratio: 1;
+}
+.galeria-controles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  font-size: 0.8rem;
+}
+.site-publico .pagina-animal-nome {
+  font-size: clamp(3rem, 6vw, 5rem);
+  letter-spacing: -0.04em;
+}
+.info {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--linha);
+  border-radius: 0;
+  padding: 1rem 0;
+}
+.destaque-idoso {
+  background: var(--superficie);
+  color: var(--tinta);
+  border-left: 3px solid var(--marca-salvia);
+  border-radius: 0;
+}
+.destaque-idoso i {
+  color: var(--marca-terracota);
+}
+.acoes-animal {
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -5px 24px #2e2c2c0a;
+}
+.acoes-animal .botao {
+  font-size: 0.85rem;
+  padding-inline: 0.75rem;
+}
+.formulario-estreito {
+  max-width: 620px;
+}
+.formulario-estreito form {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--superficie);
+  border-radius: 24px;
+  box-shadow: var(--sombra-flutuante);
+}
+.etapas-interesse {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 0;
+  margin: 1rem 0 1.5rem;
+  list-style: none;
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+}
+.etapas-interesse strong {
+  color: var(--marca-terracota);
+}
+.consentimento {
+  background: var(--fundo);
+}
+.cartao-video {
+  border-radius: 20px;
+}
+
+/* Apoio, história, informações e rodapé compartilham o mesmo fundo contínuo. */
+.formas-ajuda {
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.forma-ajuda-icone {
+  background: transparent;
+  color: var(--marca-terracota);
+  font-size: 1.75rem;
+}
+.doacoes,
+.endereco,
+.itens-doacao li,
+.fato {
+  background: var(--superficie);
+}
+.endereco {
+  border-left: 3px solid var(--marca-salvia);
+  border-radius: 0;
+}
+.sobre-topo {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+.sobre-topo > img {
+  border-radius: 30px;
+  box-shadow: var(--sombra-flutuante);
+  height: 360px;
+}
+.sobre-topo .container {
+  padding: 0;
+}
+.fatos {
+  margin-block: 2rem 3rem;
+}
+.fato {
+  box-shadow: var(--sombra-flutuante);
+  padding-block: 1.5rem;
+}
+.fato strong {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  color: var(--marca-terracota);
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+}
+.historia {
+  padding-block: 3rem;
+}
+.historia img {
+  border: 8px solid var(--superficie);
+  box-shadow: var(--sombra-flutuante);
+  max-height: 420px;
+  object-fit: cover;
+}
+.historia figcaption {
+  color: var(--texto-suave);
+  font-size: 0.75rem;
+  padding-top: 0.5rem;
+}
+.canal-oficial {
+  background: var(--superficie);
+  color: var(--tinta);
+}
+.site-publico .canal-oficial h2 {
+  color: var(--tinta);
+}
+.rodape {
+  background: var(--marca-salvia);
+  color: var(--marca-tinta);
+  border-top: 0;
+  border-radius: 32px 32px 0 0;
+  padding-top: 3rem;
+  margin-top: 2rem;
+}
+.rodape strong,
+.rodape a,
+.rodape-titulo {
+  color: var(--tinta);
+}
+.rodape p {
+  max-width: 26rem;
+  font-size: 0.85rem;
+}
+.rodape li a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 0.85rem;
+}
+.rodape .list-unstyled {
+  gap: 0 !important;
+}
+.rodape-rede {
+  background: var(--superficie);
+  box-shadow: var(--sombra-flutuante);
+}
+.rodape-base {
+  border-color: #2e2c2c26;
+  align-items: center;
+  font-size: 0.75rem;
+}
+.rodape-base a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Área da equipe: cartões claros, hierarquia e navegação persistente. */
+.painel-topo {
+  background: #fffdf9f5;
+  backdrop-filter: blur(12px);
+}
+.painel-conteudo {
+  max-width: 960px;
+  padding: 2rem 1.25rem;
+}
+.painel-conteudo > div > h1,
+.painel-titulo h1 {
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+.painel-abas {
+  background: var(--superficie);
+}
+.painel-aba.active {
+  color: var(--marca-terracota);
+}
+.numero,
+.linha-animal,
+.pedido {
+  border: 1px solid #2e2c2c08;
+  box-shadow: var(--sombra-flutuante);
+}
+.numero {
+  padding: 1.5rem 0.5rem;
+}
+.numero strong {
+  font-family: Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--marca-terracota);
+}
+.linha-animal {
+  padding: 0.85rem;
+}
+.lista-animais,
+.lista-pedidos {
+  gap: 0.85rem;
+}
+.entrar {
+  background: var(--fundo);
+}
+.entrar-cartao {
+  background: var(--superficie);
+  border-radius: 28px;
+  box-shadow: var(--sombra-flutuante);
+  padding: 2rem;
+  width: min(100%, 460px);
+}
+.entrar-cartao h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+.barra-salvar {
+  border-radius: 20px 20px 0 0;
+}
+.painel-resumo-cabeca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.painel-resumo-cabeca h1 {
+  font-weight: 600;
+}
+.painel-resumo-cabeca p {
+  margin: 0;
+}
+.painel-visao {
+  display: grid;
+  gap: 1.5rem;
+}
+@media (min-width: 768px) {
+  .catalogo-abertura {
+    grid-template-columns: 1.4fr 0.6fr;
+    align-items: center;
+    gap: 3rem;
+  }
+  .sobre-topo {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3.5rem;
+  }
+}
+@media (min-width: 992px) {
+  .cabecalho-acoes-movel {
+    display: none;
+  }
+  .pagina-animal-grade {
+    gap: 4rem;
+  }
+  .pagina-animal-grade > div:first-child {
+    position: sticky;
+    top: 90px;
+    align-self: start;
+  }
+  .pagina-animal-texto {
+    padding-top: 5rem;
+  }
+  .acoes-animal {
+    box-shadow: none;
+  }
+  .painel {
+    padding-left: 250px;
+  }
+  .painel-topo {
+    margin-left: -250px;
+  }
+  .painel-abas,
+  .painel-formulario .painel-abas {
+    width: 250px;
+    border-right: 0;
+    padding-top: 2rem;
+    background: transparent;
+  }
+  .painel-aba.active {
+    background: var(--superficie);
+    box-shadow: var(--sombra-flutuante);
+  }
+  .barra-salvar {
+    left: 250px;
+    padding-inline: max(1.25rem, calc((100vw - 250px - 960px) / 2 + 1.25rem));
+  }
+  .painel-visao {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: start;
+  }
+}
+@media (max-width: 767.98px) {
+  .container {
+    padding-inline: 1.25rem;
+  }
+  .cabecalho-conteudo {
+    min-height: 68px;
+    gap: 0.5rem;
+  }
+  .marca img {
+    width: 40px;
+    height: 40px;
+  }
+  .marca-texto strong {
+    font-size: 1rem;
+  }
+  .marca-texto small {
+    font-size: 0.5rem;
+  }
+  .filtros-fixos {
+    top: calc(68px + env(safe-area-inset-top));
+  }
+  .filtros-fixos.chips-rolagem {
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 0.45rem;
+  }
+  .filtros-fixos .chip {
+    font-size: 0.8rem;
+    padding-inline: 0.9rem;
+  }
+  .grade-animais {
+    gap: 0.8rem;
+  }
+  .cartao-animal {
+    border-radius: 20px;
+  }
+  .site-publico .cartao-animal-nome {
+    font-size: 1.5rem;
+  }
+  .cartao-animal-corpo {
+    padding-inline: 0.25rem;
+  }
+  .cartao-animal-info {
+    font-size: 0.75rem;
+  }
+  .formulario-estreito form {
+    padding: 1.25rem;
+  }
+  .numero span {
+    font-size: 0.75rem;
+  }
+  .painel-resumo-cabeca .botao {
+    width: 100%;
+  }
+}
+@media (max-width: 359.98px) {
+  .container {
+    padding-inline: 1rem;
+  }
+  .marca-texto {
+    display: none;
+  }
+  .grade-animais {
+    grid-template-columns: 1fr;
+  }
+  .fatos {
+    grid-template-columns: 1fr;
+  }
+  .fato {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .acoes-animal .botao {
+    font-size: 0.75rem;
+  }
+}
+@media (hover: none) {
+  .botao-principal:hover {
+    color: var(--tinta);
+    background: var(--marca-laranja);
+    border-color: transparent;
+  }
+  .cartao-animal:hover,
+  .cartao-video:hover img {
+    transform: none;
+  }
+  .botao-verde:hover {
+    background: var(--marca-salvia);
+    color: var(--tinta);
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .botao-principal:hover {
+    background: var(--marca-terracota);
+    color: var(--marca-clara);
+  }
+  .caminho-leve:hover,
+  .cartao-animal:hover {
+    box-shadow: 0 15px 35px #2e2c2c12;
+  }
+  .link-editorial:hover,
+  .rodape a:hover {
+    color: var(--marca-terracota);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Controles de navegação com área confortável para toque. */
+.pagina-catalogo .catalogo-abertura {
+  grid-template-columns: 1fr;
+}
+.paginacao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0;
+}
+.paginacao span {
+  font-size: 0.875rem;
+  text-align: center;
+}
+.folha fieldset {
+  min-width: 0;
+}
+@media (max-width: 767.98px) {
+  .pagina-catalogo .filtros-fixos.chips-rolagem {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: 10px;
+  }
+  .pagina-catalogo .filtros-fixos .chip {
+    flex-shrink: 0;
+    min-height: 48px;
+  }
+  .pagina-catalogo .cartao-animal-info {
+    font-size: 0.875rem;
+  }
+  .pagina-catalogo .catalogo-abertura {
+    padding-top: 0;
+    padding-bottom: 16px;
+  }
+  .pagina-catalogo .catalogo-abertura h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  .paginacao .botao {
+    min-height: 48px;
+    padding-inline: 14px;
+  }
+}
+
+/* Atalho central de cadastro: elevado no celular e integrado à lateral no computador. */
+.painel-cadastrar {
+  position: absolute;
+  left: 50%;
+  top: -64px;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 2px;
+  width: 76px;
+  min-height: 58px;
+  border: 3px solid var(--superficie);
+  border-radius: 20px;
+  background: var(--marca-laranja);
+  color: var(--marca-tinta);
+  box-shadow: 0 6px 18px #2e2c2c24;
+  text-decoration: none;
+  font-weight: 700;
+}
+.painel-cadastrar i {
+  font-size: 1.35rem;
+}
+.painel-cadastrar span {
+  font-size: 0.65rem;
+}
+@media (max-width: 991.98px) {
+  .painel:not(.painel-formulario) {
+    padding-bottom: calc(148px + env(safe-area-inset-bottom));
+  }
+}
+@media (min-width: 992px) {
+  .painel-cadastrar {
+    position: static;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    min-height: 50px;
+    margin-bottom: 1rem;
+    border: 0;
+    border-radius: 14px;
+  }
+  .painel-cadastrar span {
+    font-size: 0.95rem;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .painel-cadastrar:hover {
+    background: var(--marca-terracota);
+    color: var(--marca-clara);
+  }
+}
