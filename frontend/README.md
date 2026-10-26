@@ -1,54 +1,38 @@
-# Frontend · ESBOÇO (não é o MVP)
+# Frontend · Abrigo Animal Joinville
 
-React 19 + Vite, JavaScript (ADR-003). Baseado no protótipo visual da equipe (`AbrigoAnimal-frontend`).
-**Objetivo agora:** a equipe navegar, discutir e alterar o visual. **Ainda NÃO conversa com o backend.**
+Site público (vitrine, apadrinhamento, como ajudar) e painel da equipe da ONG.
+React 19 + Vite, JavaScript ([ADR-003](../docs/adr)). Pensado primeiro para o celular.
 
 ## Rodar
 
+Requer Node.js 20+.
+
 ```bash
+cd frontend
 npm install
-npm run dev        # http://localhost:5173
+npm run dev
 ```
 
-## Como o front vai se ligar ao back (a "costura")
+Abra `http://localhost:5173`. O painel fica em `/painel`.
 
-```
- Telas (App.jsx, Admin.jsx...)
-        │   só chamam funções de src/api/ — não sabem de onde vêm os dados
-        ▼
- src/api/vitrineApi.js, solicitacoesApi.js      ← CONTRATO: mesmo formato do backend
-        │
-        ├── VITE_USAR_API=false (hoje) → src/api/mock/  (dados de exemplo)
-        └── VITE_USAR_API=true  (integração) → src/api/cliente.js → fetch("/api/...") → Spring
-```
+## Dois modos
 
-| Arquivo | Papel |
-|---|---|
-| `src/api/config.js` | A chave: mock ou backend real |
-| `src/api/vitrineApi.js` | Animais da vitrine (`GET /api/public/animais`) |
-| `src/api/solicitacoesApi.js` | Formulário de interesse (`POST /api/public/solicitacoes`) — ainda não usado pelas telas |
-| `src/api/cliente.js` | Único lugar com `fetch`: cookie de sessão, CSRF, erros do backend |
-| `src/api/adaptadores.js` | Traduz o formato da API para o formato dos componentes do protótipo |
-| `src/api/mock/animais.js` | Dados de exemplo **no formato exato do backend** |
+| Modo                      | Como ligar                                                                          | De onde vêm os dados                                                              |
+| ------------------------- | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **Demonstração** (padrão) | nada a fazer                                                                        | Do próprio navegador (`src/api/mock`). Login: `equipe@abrigo.local` / `abrigo123` |
+| **API real**              | criar `frontend/.env.local` com `VITE_USAR_API=true` e subir o backend (porta 8080) | Do Spring Boot (`/api/...`)                                                       |
 
-**Regra para a equipe:** tela nova que precisa de dados → cria/usa uma função em `src/api/`,
-nunca `fetch` direto na tela e nunca importar arquivo de dados na tela.
-Assim, a integração final é trocar a chave, não reescrever telas.
+As telas não sabem em qual modo estão: elas só chamam funções de `src/api/`. Trocar de modo não exige mexer em tela.
 
-Contrato completo da API: [`../docs/api.md`](../docs/api.md).
+## Comandos
 
-## Ligar no backend (só na fase de integração)
+| Comando          | Para quê                                                        |
+| ---------------- | --------------------------------------------------------------- |
+| `npm run dev`    | Servidor de desenvolvimento (com proxy de `/api` para o Spring) |
+| `npm run lint`   | Confere o código (rodar antes de abrir PR)                      |
+| `npm run build`  | Gera a versão de produção em `dist/`                            |
+| `npm run format` | Formata com Prettier                                            |
 
-1. Backend rodando em `localhost:8080`
-2. Criar `frontend/.env.local` com `VITE_USAR_API=true`
-3. `npm run dev` → o Vite repassa `/api` e `/arquivos` para o Spring (ver `vite.config.js`)
+## Mais detalhes
 
-## Prévia para a equipe
-
-O workflow `.github/workflows/frontend-pages.yml` publica o esboço no GitHub Pages a cada push em `frontend/`
-(ativar em Settings → Pages → Source: GitHub Actions).
-
-## Divergências protótipo × backend (validar com a equipe)
-
-Ver a nota do vault **Integração Back-Front**. Resumo: contas de visitante, campos extras do formulário,
-porte/temperamento, financeiro e estoque (fora do escopo), só cães (o abrigo tem 27 gatos).
+[docs/GUIA_FRONTEND.md](docs/GUIA_FRONTEND.md): estrutura, telas, decisões de UX, como ligar ao backend e pendências.
