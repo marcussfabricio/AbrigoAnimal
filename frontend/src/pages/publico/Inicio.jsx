@@ -6,7 +6,7 @@ import MuralFotos from '../../components/pets/MuralFotos';
 import TrilhoVideos from '../../components/pets/Videos';
 import useCarregar from '../../hooks/useCarregar';
 import CartaoAnimal, { CartaoAnimalEsqueleto } from '../../components/pets/CartaoAnimal';
-import { CONTATO, linkWhatsApp } from '../../utils/contato';
+import { CONTATO } from '../../utils/contato';
 import './paginas.css';
 import './Inicio.css';
 
@@ -61,19 +61,6 @@ export default function Inicio() {
           <span className="capa-legenda">Imagem ilustrativa</span>
         </figure>
       </section>
-
-      <div className="container manifesto">
-        <span>Desde 2001, cuidando de vidas.</span>
-        <p>
-          Um abrigo é um começo.
-          <br />
-          <strong>Um vínculo muda a história.</strong>
-        </p>
-        <Link to="/sobre" className="link-editorial">
-          Conheça o abrigo{' '}
-          <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" />
-        </Link>
-      </div>
 
       <section className="container secao-editorial" aria-labelledby="amigos-titulo">
         <div className="cabeca-editorial">
@@ -163,6 +150,21 @@ export default function Inicio() {
         </ol>
       </section>
 
+      <section className="container convite-editorial" aria-labelledby="convite-titulo">
+        <span className="sobretitulo">Adoção responsável</span>
+        <h2 id="convite-titulo">
+          Uma nova história
+          <br />
+          pode começar <em>com você.</em>
+        </h2>
+        <Link to="/animais" className="botao botao-principal botao-grande">
+          Quero adotar <i className="fa-solid fa-paw" aria-hidden="true" />
+        </Link>
+        <Link to="/animais" className="link-editorial">
+          Conheça os animais disponíveis
+        </Link>
+      </section>
+
       {videos.length > 0 && (
         <section className="container secao-editorial" aria-labelledby="videos-titulo">
           <div className="cabeca-editorial">
@@ -181,50 +183,6 @@ export default function Inicio() {
           <TrilhoVideos videos={videos} mostrarAnimal={false} />
         </section>
       )}
-
-      <section className="container secao-editorial" aria-labelledby="ajuda-titulo">
-        <div className="cabeca-editorial">
-          <div>
-            <span className="sobretitulo">Há espaço para o seu carinho</span>
-            <h2 id="ajuda-titulo">Outros jeitos de estar perto.</h2>
-          </div>
-        </div>
-        <div className="caminhos-leves">
-          <Link to="/animais" className="caminho-leve">
-            <i className="fa-solid fa-house" aria-hidden="true" />
-            <h3>Abra a porta de casa.</h3>
-            <p>Conheça os animais e converse com a equipe para uma adoção presencial.</p>
-            <span>
-              Quero adotar <i className="fa-solid fa-arrow-right" aria-hidden="true" />
-            </span>
-          </Link>
-          <Link to="/como-ajudar#doacoes" className="caminho-leve">
-            <i className="fa-solid fa-hand-holding-heart" aria-hidden="true" />
-            <h3>Cuide, do seu jeito.</h3>
-            <p>Ração, cobertores, medicamentos ou seu tempo. Cada gesto ajuda na rotina.</p>
-            <span>
-              Quero ajudar <i className="fa-solid fa-arrow-right" aria-hidden="true" />
-            </span>
-          </Link>
-          <div className="caminho-leve" id="role-do-abrigo">
-            <i className="fa-solid fa-person-walking" aria-hidden="true" />
-            <h3>Venha dar um rolê.</h3>
-            <p>
-              O Rolê do Abrigo acontece no último sábado do mês. Confirme a programação com a
-              equipe.
-            </p>
-            <a
-              className="link-editorial"
-              href={linkWhatsApp('Olá! Gostaria de saber sobre o próximo Rolê do Abrigo.')}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Saber sobre o rolê{' '}
-              <i className="fa-solid fa-arrow-up-right-from-square" aria-hidden="true" />
-            </a>
-          </div>
-        </div>
-      </section>
 
       <section id="mural" className="container secao-editorial" aria-labelledby="mural-titulo">
         <div className="cabeca-editorial">
@@ -252,20 +210,6 @@ export default function Inicio() {
         )}
       </section>
 
-      <section className="container convite-editorial" aria-labelledby="convite-titulo">
-        <span className="sobretitulo">Um novo capítulo</span>
-        <h2 id="convite-titulo">
-          Tem uma história
-          <br />
-          esperando <em>por você.</em>
-        </h2>
-        <Link to="/animais?idoso=true" className="botao botao-principal botao-grande">
-          Quero apadrinhar um idoso <i className="fa-solid fa-heart" aria-hidden="true" />
-        </Link>
-        <Link to="/quero-ajudar" className="link-editorial">
-          Ainda tenho dúvidas
-        </Link>
-      </section>
     </div>
   );
 }

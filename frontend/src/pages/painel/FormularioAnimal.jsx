@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import * as api from '../../api/animais';
 import * as apadrinhamentos from '../../api/apadrinhamentos';
 import {
-  ALAS,
   CORES_COMUNS,
   ESPECIES,
   PORTES,
@@ -457,7 +456,6 @@ export default function FormularioAnimal() {
           ['basico', 'Básico'],
           ['saude', 'Saúde'],
           ['historia', 'História'],
-          ['abrigo', 'No abrigo'],
           ...(editando ? [['situacao', 'Situação']] : []),
         ].map(([alvo, nome]) => (
           <a key={alvo} href={'#' + alvo} className="chip chip-pequeno">
@@ -652,52 +650,6 @@ export default function FormularioAnimal() {
           maxLength={5000}
         />
         <p className="campo-dica text-end mt-n2">{f.descricao.length}/5000</p>
-      </Secao>
-
-      <Secao
-        id="abrigo"
-        icone="fa-house-chimney"
-        titulo="No abrigo"
-        descricao="Uso interno: não aparece na vitrine"
-      >
-        <GrupoChips
-          rotulo="Ala"
-          opcoes={ALAS}
-          valor={f.ala}
-          aoMudar={(v) => mudar('ala', v)}
-          rolagem
-        />
-        <div className="row g-2">
-          <div className="col-5">
-            <CampoTexto
-              rotulo="Canil"
-              value={f.canil}
-              onChange={texto('canil')}
-              maxLength={40}
-              inputMode="numeric"
-            />
-          </div>
-          <div className="col-7">
-            <CampoTexto
-              rotulo="Nº do chip"
-              value={f.chip}
-              onChange={texto('chip')}
-              erro={erros.chip}
-              maxLength={40}
-              inputMode="numeric"
-            />
-          </div>
-        </div>
-        <div className="cartao-interno">
-          <Interruptor
-            titulo="Mostrar na vitrine"
-            descricao={
-              emObito ? 'Indisponível após óbito' : 'Desligue para esconder do site público'
-            }
-            marcado={f.visivelNaVitrine && !emObito}
-            aoMudar={(v) => !emObito && mudar('visivelNaVitrine', v)}
-          />
-        </div>
       </Secao>
 
       {editando && (

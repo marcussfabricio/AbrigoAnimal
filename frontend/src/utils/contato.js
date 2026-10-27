@@ -17,5 +17,7 @@ export const linkWhatsApp = (texto, numero = CONTATO.whatsapp) =>
 export const numeroWhatsApp = (telefone) => {
   const d = String(telefone || '').replace(/\D/g, '');
   if (!d) return null;
-  return d.startsWith('55') ? d : `55${d}`;
+  if (d.length === 10 || d.length === 11) return `55${d}`;
+  if ((d.length === 12 || d.length === 13) && d.startsWith('55')) return d;
+  return null;
 };

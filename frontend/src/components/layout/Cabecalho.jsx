@@ -7,6 +7,7 @@ const LINKS = [
   { para: '/apadrinhamento', texto: 'Apadrinhamento', icone: 'fa-heart' },
   { para: '/animais', texto: 'Animais', icone: 'fa-paw' },
   { para: '/como-ajudar', texto: 'Como ajudar', icone: 'fa-hand-holding-heart' },
+  { para: '/denuncia', texto: 'Denúncias', icone: 'fa-bullhorn' },
   { para: '/sobre', texto: 'Sobre', icone: 'fa-circle-info' },
 ];
 
